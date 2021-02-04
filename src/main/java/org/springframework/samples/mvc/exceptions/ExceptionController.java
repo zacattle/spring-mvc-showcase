@@ -17,6 +17,11 @@ public class ExceptionController {
 		throw new BusinessException();
 	}
 
+	/**
+	 * 当前Controller异常拦截
+	 * @param e 指定的异常
+	 * @return
+	 */
 	@ExceptionHandler
 	public String handle(IllegalStateException e) {
 		return "IllegalStateException handled!";
