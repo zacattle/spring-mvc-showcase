@@ -10,6 +10,9 @@ import org.springframework.format.Formatter;
 import org.springframework.format.Parser;
 import org.springframework.format.Printer;
 
+/**
+ * 自定义类型转换器处理
+ */
 public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatterFactory<MaskFormat> {
 
 	public Set<Class<?>> getFieldTypes() {
