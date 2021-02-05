@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
@@ -17,155 +18,155 @@
 </head>
 <body>
 <h1><a href="<c:url value="/" />">spring-mvc-showcase</a></h1>
-<p>Recommended: Using a Web Developer tool such a Firebug to inspect the client/server interaction</p>
+<p>建议F12 打开Debug模式 查看具体的请求过程</p>
 <div id="tabs">
 	<ul>
-		<li><a href="#simple">Simple</a></li>
-		<li><a href="#mapping">Request Mapping</a></li>
-		<li><a href="#data">Request Data</a></li>
-		<li><a href="#responses">Response Writing</a></li>
-		<li><a href="#messageconverters">Message Converters</a></li>
-		<li><a href="#views">View Rendering</a></li>
-		<li><a href="#convert">Type Conversion</a></li>
-		<li><a href="#validation">Validation</a></li>
-		<li><a href="<c:url value="/form" />" title="forms">Forms</a></li>
-		<li><a href="<c:url value="/fileupload" />" title="fileupload">File Upload</a></li>
-		<li><a href="#exceptions">Exception Handling</a></li>
-		<li><a href="#redirect">Redirecting</a></li>
-        <li><a href="#async">Async Requests</a></li>
+		<li><a href="#simple">简单实例</a></li>
+		<li><a href="#mapping">请求地址映射</a></li>
+		<li><a href="#data">请求数据</a></li>
+		<li><a href="#responses">响应数据</a></li>
+		<li><a href="#messageconverters">消息转换</a></li>
+		<li><a href="#views">视图渲染</a></li>
+		<li><a href="#convert">类型转换</a></li>
+		<li><a href="#validation">数据校验</a></li>
+		<li><a href="<c:url value="/form" />" title="forms">表单数据收集</a></li>
+		<li><a href="<c:url value="/fileupload" />" title="fileupload">文件上传</a></li>
+		<li><a href="#exceptions">异常处理</a></li>
+		<li><a href="#redirect">重定向</a></li>
+        <li><a href="#async">异步请求</a></li>
     </ul>
     <div id="simple">
-		<h2>Simple</h2>
+		<h2>简单实例</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.simple</code> package for the @Controller code
-		</p>
+			查看 <strong><code>org.springframework.samples.mvc.simple</code></strong> 包中  @Controller
+		</h3>
 		<ul>
 			<li>
-				<a id="simpleLink" class="textLink" href="<c:url value="/simple" />">GET /simple</a>
+				<a id="simpleLink" class="textLink" href="<c:url value="/simple" />">请求/simple</a>
 			</li>
 			<li>
-				<a id="simpleRevisited" class="textLink" href="<c:url value="/simple/revisited" />">GET /simple/revisited</a>
+				<a id="simpleRevisited" class="textLink" href="<c:url value="/simple/revisited" />">请求/simple/revisited</a>
 			</li>
 		</ul>
 	</div>
 	<div id="mapping">
-		<h2>Request Mapping</h2>
+		<h2>请求映射</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.mapping</code> package for the @Controller code
+			查看 <strong><code>org.springframework.samples.mvc.mapping</code></strong> 包中的 @Controller
 		</p>
 		<ul>
 			<li>
-				<a id="byPath" class="textLink" href="<c:url value="/mapping/path" />">By path</a>
+				<a id="byPath" class="textLink" href="<c:url value="/mapping/path" />">通过url路径直接访问</a>
 			</li>
 			<li>
-				<a id="byPathPattern" class="textLink" href="<c:url value="/mapping/path/wildcard" />">By path pattern</a>
+				<a id="byPathPattern" class="textLink" href="<c:url value="/mapping/path/wildcard" />">通过url中通配符</a>
 			</li>
 			<li>
-				<a id="byMethod" class="textLink" href="<c:url value="/mapping/method" />">By path and method</a>
+				<a id="byMethod" class="textLink" href="<c:url value="/mapping/method" />">通过请求方法类型确定</a>
 			</li>
 			<li>
-				<a id="byParameter" class="textLink" href="<c:url value="/mapping/parameter?foo=bar" />">By path, method, and presence of parameter</a>
+				<a id="byParameter" class="textLink" href="<c:url value="/mapping/parameter?foo=bar" />">通过请求路径，方法和携带指定参数确定</a>
 			</li>
 			<li>
-				<a id="byNotParameter" class="textLink" href="<c:url value="/mapping/parameter" />">By path, method, and not presence of parameter</a>
+				<a id="byNotParameter" class="textLink" href="<c:url value="/mapping/parameter" />">通过请求路径，方法和不携带指定参数确定</a>
 			</li>
 			<li>
-				<a id="byHeader" href="<c:url value="/mapping/header" />">By presence of header</a>
+				<a id="byHeader" href="<c:url value="/mapping/header" />">通过携带指定的header确定</a>
 			</li>
 			<li>
-				<a id="byHeaderNegation" class="textLink" href="<c:url value="/mapping/header" />">By absence of header</a>
+				<a id="byHeaderNegation" class="textLink" href="<c:url value="/mapping/header" />">通过不携带指定的header确定</a>
 			</li>
 			<li>
 				<form id="byConsumes" class="readJsonForm" action="<c:url value="/mapping/consumes" />" method="post">
-					<input id="byConsumesSubmit" type="submit" value="By consumes" />
+					<input id="byConsumesSubmit" type="submit" value="通过设置指定的consumes，即Content-Type" />
 				</form>
 			</li>
 			<li>
-				<a id="byProducesAcceptJson" class="writeJsonLink" href="<c:url value="/mapping/produces" />">By produces via Accept=application/json</a>
+				<a id="byProducesAcceptJson" class="writeJsonLink" href="<c:url value="/mapping/produces" />">通过设置 Accept=application/json</a>
 			</li>
             <li>
-                <a id="byProducesAcceptXml" class="writeXmlLink" href="<c:url value="/mapping/produces" />">By produces via Accept=application/xml</a>
+                <a id="byProducesAcceptXml" class="writeXmlLink" href="<c:url value="/mapping/produces" />">通过设置 Accept=application/xml</a>
             </li>
             <li>
-              <a id="byProducesJsonExt" class="writeJsonLink" href="<c:url value="/mapping/produces.json" />">By produces via ".json"</a>
+              <a id="byProducesJsonExt" class="writeJsonLink" href="<c:url value="/mapping/produces.json" />">通过 ".json"后缀访问</a>
             </li>
             <li>
-                <a id="byProducesXmlExt" class="writeXmlLink" href="<c:url value="/mapping/produces.xml" />">By produces via ".xml"</a>
+                <a id="byProducesXmlExt" class="writeXmlLink" href="<c:url value="/mapping/produces.xml" />">通过 ".xml"后缀访问</a>
             </li>
 		</ul>
 	</div>
 	<div id="data">
-		<h2>Request Data</h2>
+		<h2>请求数据处理</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.data</code> package for the @Controller code
+			查看 <strong><code>org.springframework.samples.mvc.data</code></strong> 包中的 @Controller
 		</p>
 		<ul>
 			<li>
-				<a id="param" class="textLink" href="<c:url value="/data/param?foo=bar" />">Query parameter</a>
+				<a id="param" class="textLink" href="<c:url value="/data/param?foo=bar" />">查询参数处理</a>
 			</li>
 			<li>
-				<a id="group" class="textLink" href="<c:url value="/data/group?param1=foo&param2=bar&param3=baz" />">Group of query parameters</a>
+				<a id="group" class="textLink" href="<c:url value="/data/group?param1=foo&param2=bar&param3=baz" />">多组查询参数</a>
 			</li>
 			<li>
-				<a id="var" class="textLink" href="<c:url value="/data/path/foo" />">Path variable</a>
+				<a id="var" class="textLink" href="<c:url value="/data/path/foo" />">路径变量</a>
 			</li>
 			<li>
-				<a id="matrixVar" class="textLink" href="<c:url value="/data/matrixvars;foo=bar/simple" />">Matrix variable</a>
+				<a id="matrixVar" class="textLink" href="<c:url value="/data/matrixvars;foo=bar/simple" />">矩阵变量</a>
 			</li>
 			<li>
-				<a id="matrixVarMultiple" class="textLink" href="<c:url value="/data/matrixvars;foo=bar1/multiple;foo=bar2" />">Matrix variables (multiple)</a>
+				<a id="matrixVarMultiple" class="textLink" href="<c:url value="/data/matrixvars;foo=bar1/multiple;foo=bar2" />">多个矩阵变量</a>
 			</li>
 			<li>
 				<a id="header" class="textLink" href="<c:url value="/data/header" />">Header</a>
 			</li>
 			<li>
 				<form id="requestBody" class="textForm" action="<c:url value="/data/body" />" method="post">
-					<input id="requestBodySubmit" type="submit" value="Request Body" />
+					<input id="requestBodySubmit" type="submit" value="Body携带数据" />
 				</form>
 			</li>				
 			<li>
 				<form id="requestBodyAndHeaders" class="textForm" action="<c:url value="/data/entity" />" method="post">
-					<input id="requestBodyAndHeadersSubmit" type="submit" value="Request Body and Headers" />
+					<input id="requestBodyAndHeadersSubmit" type="submit" value="Body 和 Headers携带数据" />
 				</form>
 			</li>
 		</ul>	
 		<div id="standardArgs">
-			<h3>Standard Resolvable Web Arguments</h3>
+			<h3>参数解析</h3>
 			<p>
-			    See the <code>org.springframework.samples.mvc.data.standard</code> package for the @Controller code
+				查看 <strong><code>org.springframework.samples.mvc.data.standard</code></strong> 包中的 @Controller
 			</p>
 			<ul>
 				<li>
-					<a id="request" class="textLink" href="<c:url value="/data/standard/request" />">Request arguments</a>				
+					<a id="request" class="textLink" href="<c:url value="/data/standard/request" />">请求参数解析</a>
 				</li>
 				<li>
 					<form id="requestReader" class="textForm" action="<c:url value="/data/standard/request/reader" />" method="post">
-						<input id="requestReaderSubmit" type="submit" value="Request Reader" />
+						<input id="requestReaderSubmit" type="submit" value="后端通过Reader读取数据" />
 					</form>
 				</li>			
 				<li>
 					<form id="requestIs" class="textForm" action="<c:url value="/data/standard/request/is" />" method="post">
-						<input id="requestIsSubmit" type="submit" value="Request InputStream" />
+						<input id="requestIsSubmit" type="submit" value="后端通过InputStream读取数据" />
 					</form>
 				</li>
 				<li>
-					<a id="response" class="textLink" href="<c:url value="/data/standard/response" />">Response arguments</a>				
+					<a id="response" class="textLink" href="<c:url value="/data/standard/response" />">Response响应</a>
 				</li>			
 				<li>
-					<a id="writer" class="textLink" href="<c:url value="/data/standard/response/writer" />">Response Writer</a>
+					<a id="writer" class="textLink" href="<c:url value="/data/standard/response/writer" />">后端通过 Writer回写响应数据</a>
 				</li>
 				<li>
-					<a id="os" class="textLink" href="<c:url value="/data/standard/response/os" />">Response OutputStream</a>				
+					<a id="os" class="textLink" href="<c:url value="/data/standard/response/os" />">后端通过OutputStream回写响应数据</a>
 				</li>
 				<li>
-					<a id="session" class="textLink" href="<c:url value="/data/standard/session" />">Session</a>			
+					<a id="session" class="textLink" href="<c:url value="/data/standard/session" />">后端Session</a>
 				</li>			
 			</ul>
 		</div>
 		<div id="customArgs">
-			<h3>Custom Resolvable Web Arguments</h3>	
+			<h3>后端添加自定义数据解析</h3>
 			<p>
-				See the <code>org.springframework.samples.mvc.data.custom</code> package for the @Controller code
+				查看 <strong><code>org.springframework.samples.mvc.data.custom</code></strong> 包中的 @Controller
 			</p>
 			<ul>
 				<li>
@@ -175,57 +176,57 @@
 		</div>
 	</div>
 	<div id="responses">
-		<h2>Response Writing</h2>
+		<h2>响应数据回写</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.response</code> package for the @Controller code
+			查看<strong><code>org.springframework.samples.mvc.response</code></strong> 包中的 @Controller
 		</p>		
 		<ul>
 			<li>
-				<a id="responseBody" class="textLink" href="<c:url value="/response/annotation" />">@ResponseBody</a>			
+				<a id="responseBody" class="textLink" href="<c:url value="/response/annotation" />">使用@ResponseBody</a>
 			</li>
 			<li>
-				<a id="responseCharsetAccept" class="utf8TextLink" href="<c:url value="/response/charset/accept" />">@ResponseBody (UTF-8 charset requested)</a>
+				<a id="responseCharsetAccept" class="utf8TextLink" href="<c:url value="/response/charset/accept" />">@ResponseBody (UTF-8 请求头)</a>
 			</li>
 			<li>
-				<a id="responseCharsetProduce" class="textLink" href="<c:url value="/response/charset/produce" />">@ResponseBody (UTF-8 charset produced)</a>
+				<a id="responseCharsetProduce" class="textLink" href="<c:url value="/response/charset/produce" />">@ResponseBody (UTF-8 请求produced)</a>
 			</li>
 			<li>
-				<a id="responseEntityStatus" class="textLink" href="<c:url value="/response/entity/status" />">ResponseEntity (custom status)</a>			
+				<a id="responseEntityStatus" class="textLink" href="<c:url value="/response/entity/status" />">后端使用ResponseEntity (自定义status码)</a>
 			</li>
 			<li>
-				<a id="responseEntityHeaders" class="textLink" href="<c:url value="/response/entity/headers" />">ResponseEntity (custom headers)</a>			
+				<a id="responseEntityHeaders" class="textLink" href="<c:url value="/response/entity/headers" />">后端使用ResponseEntity (自定义响应headers)</a>
 			</li>
 		</ul>	
 	</div>
 	<div id="messageconverters">
-		<h2>Http Message Converters</h2>
+		<h2>消息（请求内容）转换</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.messageconverters</code> package for the @Controller code
+			查看 <strong><code>org.springframework.samples.mvc.messageconverters</code></strong> 包中的 @Controller
 		</p>	
 		<div id="stringMessageConverter">
-			<h3>StringHttpMessageConverter</h3>
+			<h3>使用StringHttpMessageConverter转换器实例</h3>
 			<ul>
 				<li>
 					<form id="readString" class="textForm" action="<c:url value="/messageconverters/string" />" method="post">
-						<input id="readStringSubmit" type="submit" value="Read a String" />
+						<input id="readStringSubmit" type="submit" value="读取String" />
 					</form>
 				</li>
 				<li>
-					<a id="writeString" class="textLink" href="<c:url value="/messageconverters/string" />">Write a String</a>
+					<a id="writeString" class="textLink" href="<c:url value="/messageconverters/string" />">回写String</a>
 				</li>
 			</ul>
-			<h3>FormHttpMessageConverter</h3>
+			<h3>使用FormHttpMessageConverter转换器实例</h3>
 			<ul>
 				<li>
 					<form id="readForm" action="<c:url value="/messageconverters/form" />" method="post">
-						<input id="readFormSubmit" type="submit" value="Read Form Data" />		
+						<input id="readFormSubmit" type="submit" value="读取表单数据" />
 					</form>
 				</li>
 				<li>
-					<a id="writeForm" href="<c:url value="/messageconverters/form" />">Write Form Data</a>
+					<a id="writeForm" href="<c:url value="/messageconverters/form" />">回写数据到表单</a>
 				</li>
 			</ul>
-			<h3>Jaxb2RootElementHttpMessageConverter</h3>
+			<h3>使用Jaxb2RootElementHttpMessageConverter转换器实例</h3>
 			<ul>
 				<li>
 					<form id="readXml" class="readXmlForm" action="<c:url value="/messageconverters/xml" />" method="post">
@@ -239,7 +240,7 @@
                     <a id="writeXmlExt" class="writeXmlLink" href="<c:url value="/messageconverters/xml.xml" />">Write XML via ".xml"</a>
                 </li>
 			</ul>
-			<h3>MappingJacksonHttpMessageConverter</h3>
+			<h3>使用MappingJacksonHttpMessageConverter转换器实例</h3>
 			<ul>
 				<li>
 					<form id="readJson" class="readJsonForm" action="<c:url value="/messageconverters/json" />" method="post">
@@ -258,7 +259,7 @@
                     <a id="writeJsonExt" class="writeJsonLink" href="<c:url value="/messageconverters/json.json" />">Write JSON via ".json"</a>
                 </li>
 			</ul>
-			<h3>AtomFeedHttpMessageConverter</h3>
+			<h3>使用AtomFeedHttpMessageConverter转换器实例</h3>
 			<ul>
 				<li>
 					<form id="readAtom" action="<c:url value="/messageconverters/atom" />" method="post">
@@ -269,7 +270,7 @@
 					<a id="writeAtom" href="<c:url value="/messageconverters/atom" />">Write Atom</a>
 				</li>
 			</ul>
-			<h3>RssChannelHttpMessageConverter</h3>
+			<h3>使用RssChannelHttpMessageConverter转换器实例</h3>
 			<ul>
 				<li>
 					<form id="readRss" action="<c:url value="/messageconverters/rss" />" method="post">
@@ -285,7 +286,7 @@
 	<div id="views">
 		<h2>View Rendering</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.views</code> package for the @Controller code
+			查看 <strong><code>org.springframework.samples.mvc.views</code></strong> 包中的 @Controller
 		</p>
 		<ul>
 			<li>
@@ -311,7 +312,7 @@
 	<div id="convert">
 		<h2>Type Conversion</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.convert</code> package for the @Controller code
+			查看 <strong><code>org.springframework.samples.mvc.convert</code></strong> 包中的 @Controller
 		</p>
 		<ul>
 			<li>
@@ -366,7 +367,7 @@
 	<div id="validation">
 		<h2>Validation</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.validation</code> package for the @Controller code	
+			查看 <strong><code>org.springframework.samples.mvc.validation</code></strong> 包中的 @Controller
 		</p>
 		<ul>
 			<li>
@@ -380,7 +381,7 @@
 	<div id="exceptions">
 		<h2>Exception Handling</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.exceptions</code> package for the @Controller code	
+			查看 <strong><code>org.springframework.samples.mvc.exceptions</code></strong> 包中的 @Controller
 		</p>
 		<ul>
 			<li>
@@ -394,7 +395,7 @@
 	<div id="redirect">
 		<h2>Redirecting</h2>
 		<p>
-			See the <code>org.springframework.samples.mvc.redirect</code> package for the @Controller code	
+			查看 <strong><code>org.springframework.samples.mvc.redirect</code></strong> package for the @Controller code
 		</p>
 		<ul>
 			<li>
@@ -411,7 +412,7 @@
 			<em>Note: Links may take 2-3 seconds to complete.</em>
 		</p>
 		<p>
-		  See the <code>org.springframework.samples.mvc.async</code> package for the @Controller code.
+			查看 <strong><code>org.springframework.samples.mvc.async</code></strong>包中的 @Controller .
 		</p>
 		<ul>
 		<li>

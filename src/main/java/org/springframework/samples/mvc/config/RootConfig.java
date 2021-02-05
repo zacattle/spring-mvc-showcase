@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.RequestDataValueProcessor;
 
 // Root Context: defines shared resources visible to all other web components
@@ -28,4 +29,13 @@ public class RootConfig {
 	public RequestDataValueProcessor requestDataValueProcessor() {
 		return new CsrfRequestDataValueProcessor();
 	}
+
+	@Bean
+	public CharacterEncodingFilter characterEncodingFilter() {
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		return characterEncodingFilter;
+	}
+
 }

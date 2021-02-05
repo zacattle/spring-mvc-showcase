@@ -1,11 +1,14 @@
 package org.springframework.samples.mvc.config;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.samples.mvc.async.TimeoutCallableProcessingInterceptor;
 import org.springframework.samples.mvc.convert.MaskFormatAnnotationFormatterFactory;
 import org.springframework.samples.mvc.data.custom.CustomArgumentResolver;
@@ -71,6 +74,31 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		configurer.setDefaultTimeout(3000);
 		configurer.registerCallableInterceptors(new TimeoutCallableProcessingInterceptor());
 	}
+
+/*	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		converters.add(responseBodyConverter());
+	}*/
+
+/*	@Bean
+	public HttpMessageConverter responseBodyConverter() {
+		//设置编码格式，不设置会导致中文乱码
+		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+		return converter;
+	}*/
+
+	/**
+	 * 扩展新的内容（请求参数）转换器
+	 * 尽量不要覆盖configureMessageConverters方法，会导致默认的转换器（Converter）失效
+	 * @param converters
+	 */
+	@Override
+	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+		//设置编码格式，不设置会导致中文乱码
+		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+		converters.add(converter);
+	}
+
 
 	@Bean
 	public MultipartResolver multipartResolver() {

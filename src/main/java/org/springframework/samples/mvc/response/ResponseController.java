@@ -9,15 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 回写响应测试
+ */
 @RestController
 @RequestMapping(value="/response", method=RequestMethod.GET)
 public class ResponseController {
 
 	@GetMapping("/annotation")
 	public String responseBody() {
-		return "The String ResponseBody";
+		return "The String ResponseBody 中文测试 会乱码 需设置produces进行处理";
 	}
 
+	/**
+	 * unicode码回写
+	 * @return
+	 */
 	@GetMapping("/charset/accept")
 	public String responseAcceptHeaderCharset() {
 		return "\u3053\u3093\u306b\u3061\u306f\u4e16\u754c\uff01 (\"Hello world!\" in Japanese)";
@@ -25,7 +32,7 @@ public class ResponseController {
 
 	@GetMapping(value="/charset/produce", produces="text/plain;charset=UTF-8")
 	public String responseProducesConditionCharset() {
-		return "\u3053\u3093\u306b\u3061\u306f\u4e16\u754c\uff01 (\"Hello world!\" in Japanese)";
+		return "\u3053\u3093\u306b\u3061\u306f\u4e16\u754c\uff01 (\"Hello world!\" in Japanese 中文)";
 	}
 
 	@GetMapping("/entity/status")

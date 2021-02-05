@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 自定义参数解析规则
+ * 查看{@link RequestAttribute}和{@link CustomArgumentResolver}
+ */
 @RestController
 public class CustomArgumentController {
 

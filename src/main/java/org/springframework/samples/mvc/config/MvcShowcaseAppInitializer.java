@@ -28,7 +28,7 @@ public class MvcShowcaseAppInitializer extends AbstractAnnotationConfigDispatche
 
 	@Override
 	protected Filter[] getServletFilters() {
-		return new Filter[] { new DelegatingFilterProxy("csrfFilter") };
+		return new Filter[] { new DelegatingFilterProxy("csrfFilter"),new DelegatingFilterProxy("characterEncodingFilter") };
 	}
 
 }
