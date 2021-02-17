@@ -6,8 +6,9 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
- * Initialize the Servlet container. This class is detected by the Servlet
- * container on startup.
+ * Initialize the Servlet container. This class is detected by the Servlet container on startup.
+ * 初始化Servlet容器。 Servlet容器在启动时会检测到此类。（继承AbstractAnnotationConfigDispatcherServletInitializer类）
+ *
  */
 public class MvcShowcaseAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
