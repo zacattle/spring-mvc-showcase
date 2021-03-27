@@ -42,7 +42,7 @@
 		</h3>
 		<ul>
 			<li>
-				<a id="simpleLink" class="textLink" href="<c:url value="/simple" />">请求/simple</a>
+				<a id="simpleLink" class="textLink" href="<c:url value="/simple" />">请求URL:/simple</a>
 			</li>
 			<li>
 				<a id="simpleRevisited" class="textLink" href="<c:url value="/simple/revisited" />">请求/simple/revisited</a>

@@ -12,7 +12,6 @@ public class SimpleController {
 
 	@GetMapping("/simple")
 	public String simple() throws InterruptedException {
-		Thread.sleep(20000);
 		return "Hello world!";
 	}
 

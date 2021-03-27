@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import com.rometools.rome.feed.atom.Feed;
 import com.rometools.rome.feed.rss.Channel;
 
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +35,8 @@ public class MessageConvertersController {
 	// Form encoded data (application/x-www-form-urlencoded)
 
 	@PostMapping("/form")
-	public String readForm(@ModelAttribute JavaBean bean) {
-		return "Read x-www-form-urlencoded: " + bean;
+	public String readForm(@ModelAttribute JavaBean bean, Model model) {
+		return "Read x-www-form-urlencoded: " + bean + "model attribute:" + model.asMap().get("javaBean");
 	}
 
 	@GetMapping("/form")
